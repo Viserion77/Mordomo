@@ -1,0 +1,50 @@
+require('dotenv').config();
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+const user = new Discord.User();
+var comandoIniciado = false;
+var contaMensagens = 0;
+var lista = [{}];
+const TOKEN = "NjcwNjY2NDE1OTA0MzkxMjEz.Xix9gQ.M1UJSk-wlKcfMNAMESEvFXyWl1o";
+
+bot.login(TOKEN);
+
+bot.on('ready', () => {
+    console.info(`Logged in as ${bot.user.tag}!`);
+});
+
+bot.on('message', msg => {
+    
+    const user=msg.author;
+    if (!(user.tag.match(/ByVisTMoAi#3981/))){
+
+        if (msg.content.match(/mordomo/)) {
+            comandoIniciado=true;
+            if (user.tag.match(/Viserion#0025/)){
+                msg.channel.send('Oi viserion...');
+            }else if (user.tag.match(/#/)){
+                msg.channel.send('Diga...');
+            }else{
+                msg.reply('AAAAAAAAAAAAAAA não me bulga porra');
+            }
+        }
+
+        if (comandoIniciado){
+            if (msg.content.match(/add/)) {
+                msg.channel.send('Não ta pronto ainda e vc sabe disse, não tem graça');
+                //lista.push({id:1,title:"job"});
+                //msg.reply(lista.values);
+                contaMensagens++;
+            }else if (msg.content.match(/vamo jogar/)) {
+                msg.channel.send('Eu até ia, pra te fazer compania, mas eu so um bot...');
+                contaMensagens++;
+            }else if (msg.content.match(/literalmente/)) {
+                msg.channel.send('Não zoa porra \'-\'');
+                contaMensagens++;
+            }else{
+                contaMensagens++;
+            }
+        }
+        if (contaMensagens==5){comandoIniciado=false;}
+}
+});
