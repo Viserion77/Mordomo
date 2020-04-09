@@ -5,7 +5,7 @@ const user = new Discord.User();
 var comandoIniciado = false;
 var contaMensagens = 0;
 var lista = [{}];
-const TOKEN = "NjcwNjY2NDE1OTA0MzkxMjEz.Xix9gQ.M1UJSk-wlKcfMNAMESEvFXyWl1o";
+const TOKEN = "";
 
 bot.login(TOKEN);
 
