@@ -41,6 +41,8 @@ bot.on('message', msg => {
             }else if (msg.content.match(/literalmente/)) {
                 msg.channel.send('Não zoa porra \'-\'');
                 contaMensagens++;
+            }else if (msg.content.match(/Espera ai/)) {
+                msg.channel.send('... \'-\'');
             }else{
                 contaMensagens++;
             }
