@@ -1,5 +1,5 @@
 {
-  "name": "Mordomo-bot",
+  "name": "mordomo-bot",
   "version": "1.0.0",
   "description": "Bot Mordomo to Discord",
   "main": "index.js",
