@@ -26,7 +26,7 @@ var contaMensagens = 0;
 client.on('message', msg => {
 
   console.log(client.uptime)
-  if (client.uptime>=(lestValidation+86400000000)){
+  if (client.uptime>=(lestValidation+86400000)){
     lestValidation=client.uptime
     let mensagensOk=false;
     var now = Date.now()
