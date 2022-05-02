@@ -4,7 +4,8 @@
   "description": "Bot Mordomo to Discord",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node -r dotenv/config ./prod/index.js"
   },
   "author": "Viserion#0025",
   "dependencies": {
