@@ -1,15 +1,19 @@
 import { Client } from "discord.js";
-import { connectDatabase } from "./database/connectDatabase";
+import { IntentOptions } from "./config/IntentOptions";
+import { onInteraction } from "./events/onInteraction";
+import { onReady } from "./events/onReady";
 import { validateEnv } from "./utils/validateEnv";
 
 (async () => {
   if (!validateEnv()) return;
+  const BOT = new Client({ intents: IntentOptions });
 
-  const BOT = new Client();
+  BOT.on("ready", async () => await onReady(BOT));
 
-  BOT.on("ready", () => console.log("Connected to Discord!"));
-
-  await connectDatabase();
+  BOT.on(
+    "interactionCreate",
+    async (interaction) => await onInteraction(interaction)
+  );
 
   await BOT.login(process.env.BOT_TOKEN);
 })();
