@@ -9,4 +9,5 @@ export interface Command {
     | Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand">
     | SlashCommandSubcommandsOnlyBuilder;
     run: (interaction: CommandInteraction) => Promise<void>;
+    help?: string;
 }
