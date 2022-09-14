@@ -1,13 +1,13 @@
 import {
-    SlashCommandBuilder,
-    SlashCommandSubcommandsOnlyBuilder,
-} from "@discordjs/builders";
-import { CommandInteraction } from "discord.js";
+  CommandInteraction,
+  SlashCommandBuilder,
+  SlashCommandSubcommandsOnlyBuilder,
+} from 'discord.js';
 
 export interface Command {
-    data:
-    | Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand">
+  data:
+    | Omit<SlashCommandBuilder, 'addSubcommandGroup' | 'addSubcommand'>
     | SlashCommandSubcommandsOnlyBuilder;
-    run: (interaction: CommandInteraction) => Promise<void>;
-    help?: string;
+  run: (interaction: CommandInteraction) => Promise<void>;
+  help?: string;
 }

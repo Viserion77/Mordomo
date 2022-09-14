@@ -1,12 +1,9 @@
-# Mordomo Bot
 
-A ideia é criar um bot para aprender um pouco de IA...
+## Running the application
+### Locally
+- Build the image: `docker-compose build`
+- Run the container: `docker-compose up -d`
 
-Da um help aew
-
-# Run the bot locally
-
-```
-$ docker build . -t mordomo/application
-$ docker run -p 3000:3000 -d mordomo/application
-```
+### Production
+- Build the image: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml build`
+- Run the container: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d`

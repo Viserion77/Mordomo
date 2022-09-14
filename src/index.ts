@@ -1,19 +1,21 @@
-import { Client } from "discord.js";
-import { IntentOptions } from "./config/IntentOptions";
-import { onInteraction } from "./events/onInteraction";
-import { onReady } from "./events/onReady";
-import { validateEnv } from "./utils/validateEnv";
+import * as dotenv from 'dotenv';
+import {Client} from 'discord.js';
+import {IntentOptions} from './config/IntentOptions';
+import {onInteraction} from './events/onInteraction';
+import {onReady} from './events/onReady';
+import {validateEnv} from './utils/validateEnv';
 
+dotenv.config();
 (async () => {
   if (!validateEnv()) return;
-  const BOT = new Client({ intents: IntentOptions });
+  const mordomoClient = new Client({intents: IntentOptions});
 
-  BOT.on("ready", async () => await onReady(BOT));
+  mordomoClient.on('ready', async () => await onReady(mordomoClient));
 
-  BOT.on(
-    "interactionCreate",
-    async (interaction) => await onInteraction(interaction)
+  mordomoClient.on(
+    'interactionCreate',
+    async interaction => await onInteraction(interaction)
   );
 
-  await BOT.login(process.env.BOT_TOKEN);
+  await mordomoClient.login(process.env.DISCORD_BOT_TOKEN);
 })();

@@ -1,32 +1,13 @@
-version: '3'
+version: '3.7'
 
 services:
-  nodejs:
-    container_name: nodejs
-    build: '.'
-    depends_on:
-      - postgres
-    networks:
-      - app-connect
-    ports:
-      - '3000:3000'
-
-  postgres:
-    container_name: postgres
-    image: postgres:11
-    restart: unless-stopped
+  ts-node-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
     volumes:
-      - postgres-data:/data
-    environment: 
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASS} 
-    networks:
-      - app-connect
-
-volumes:
-  postgres-data:
-
-networks:
-  app-connect:
-      driver: bridge
+      - ./src:/urs/src/app/src
+      - ./nodemon.json:/urs/src/app/nodemon.json
+    container_name: ts-node-docker
+    command: npm run dev

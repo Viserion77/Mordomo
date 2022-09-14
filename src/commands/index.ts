@@ -1,7 +1,5 @@
-import { Command } from "../interfaces/Command";
+import {Command} from '../interfaces/Command';
 
-import { help } from "./help";
+import {help} from './help';
 
-export const CommandList: Command[] = [
-    help,
-];
+export const CommandList: Command[] = [help];

@@ -1,23 +1,26 @@
-import { REST } from "@discordjs/rest";
-import { Routes } from "discord-api-types/v9";
-import { Client } from "discord.js";
-import { CommandList } from "../commands";
+import {REST} from '@discordjs/rest';
+import {Routes} from 'discord-api-types/v9';
+import {type Client} from 'discord.js';
+import {CommandList} from '../commands';
 
-export const onReady = async (BOT: Client) => {
-    const rest = new REST({ version: "9" }).setToken(
-        process.env.BOT_TOKEN as string
-    );
+export const onReady = async (discordClient: Client) => {
+  const rest = new REST({version: '9'}).setToken(
+    process.env.DISCORD_BOT_TOKEN as string
+  );
 
-    const commandData = CommandList.map((command) => command.data.toJSON());
+  const commandData = CommandList.map(command => command.data.toJSON());
 
-    await Promise.all(BOT.guilds.cache.map(guild => rest.put(
+  await Promise.all(
+    discordClient.guilds.cache.map(guild =>
+      rest.put(
         Routes.applicationGuildCommands(
-            BOT.user?.id || "missing id",
-            guild.id
+          discordClient.user?.id || 'missing id',
+          guild.id
         ),
-        { body: commandData }
+        {body: commandData}
+      )
     )
-    ))
+  );
 
-    console.log("Discord ready!");
+  console.log('Discord is ready!');
 };
